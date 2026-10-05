@@ -250,10 +250,10 @@ def generate_conversion_page():
 <body>
 
   <header class="header">
-    <h1>SCANDINAVIGATING 🌲</h1>
-    <p>Tap any video below to unlock direct booking rates, cabins & regional maps</p>
+    <h1>SCANDINAVIGATING</h1>
+    <p>Tap any video you watched to discover accommodations in the destination you wish to visit, or click the button below to explore the map!</p>
     <a href="{GENERAL_MAP_URL}" class="master-btn" target="_blank">
-      🗺️ Explore All Nordic Stays & Maps
+      🗺️ Explore All Stays
     </a>
   </header>
 
