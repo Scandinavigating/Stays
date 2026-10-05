@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scandinavigating | Travel Guides, Stays & Maps</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0b1325;
+      color: #ffffff;
+      padding: 24px 12px 60px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      text-align: center;
+      max-width: 500px;
+      margin-bottom: 24px;
+    }
+    .header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .header p {
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+    .master-btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 24px;
+      background-color: #56cfe1;
+      color: #0b1325;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(86, 207, 225, 0.28);
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    .master-btn:hover {
+      background-color: #48b8c9;
+    }
+    .master-btn:active {
+      transform: scale(0.97);
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 12px;
+    }
+    .grid-item {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: #1e293b;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+    .grid-item:hover img, .grid-item:active img {
+      transform: scale(1.04);
+    }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(11, 19, 37, 0.95) 0%, rgba(11, 19, 37, 0.4) 65%, transparent 100%);
+      padding: 24px 6px 8px 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-align: center;
+      color: #ffffff;
+      line-height: 1.25;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>SCANDINAVIGATING 🌲</h1>
+    <p>Tap any video below to unlock direct booking rates, cabins & regional maps</p>
+    <a href="https://www.stay22.com/embed/gm?aid=scandinavigating&lat=64.0&lng=16.0&zoom=4" class="master-btn" target="_blank">
+      🗺️ Explore All Nordic Stays & Maps
+    </a>
+  </header>
+
+  <main class="grid-container">
+    <a href="https://www.stay22.com/allez/roam?aid=scandinavigating&address=Rovaniemi+Finnish+Lapland+Finland" class="grid-item" target="_blank">
+      <img src="Thumbnails/1. Rovaniemi, Finland (video_03).jpeg" alt="Rovaniemi, Finland">
+      <div class="overlay">📍 Rovaniemi, Finland</div>
+    </a>
+  </main>
+
+</body>
+</html>
