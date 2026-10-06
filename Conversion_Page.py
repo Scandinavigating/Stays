@@ -61,15 +61,18 @@ def load_excel_data():
 
 def clean_thumbnail_title(filename):
     """
-    Haalt nummers zoals '1. ' aan het begin weg en haalt '(video_xx)' weg.
-    Bijv: '1. Rovaniemi, Finland (video_03).jpeg' -> 'Rovaniemi, Finland'
+    Verwijdert '(video_xx)', eventuele volgnummers en datumcodes (bijv. 20261006).
+    Resultaat: puur 'Plaats, Land'.
     """
     name_no_ext = os.path.splitext(filename)[0]
-    # Verwijder volgnummer aan het begin (bijv. "1. " of "01 - ")
-    name_no_num = re.sub(r"^\d+[\.\s\-_]+", "", name_no_ext)
-    # Verwijder alles tussen haakjes inclusief de haakjes (bijv. "(video_03)")
-    cleaned_name = re.sub(r"\(.*?\)", "", name_no_num)
-    return cleaned_name.strip(" ,.-_")
+    # 1. Haal alles tussen haakjes weg inclusief de haakjes (zoals (video_01))
+    cleaned = re.sub(r"\(.*?\)", "", name_no_ext)
+    # 2. Haal eventuele volgnummers aan het begin weg (zoals 1. of 01 -)
+    cleaned = re.sub(r"^\d+[\.\s\-_]+", "", cleaned)
+    # 3. Haal een 8-cijferige datum (YYYYMMDD) aan het einde weg
+    cleaned = re.sub(r"\b\d{8}\b", "", cleaned)
+    # 4. Verwijder overtollige spaties en leestekens aan de randen
+    return cleaned.strip(" ,.-_")
 
 def extract_id_from_filename(filename):
     """
@@ -94,11 +97,16 @@ def build_grid_cards(df):
     valid_exts = {".jpg", ".jpeg", ".png", ".webp"}
     files = [f for f in os.listdir(THUMBNAILS_DIR) if os.path.splitext(f)[1].lower() in valid_exts]
 
-    # Sorteer op eventueel volgnummer vooraan
+# Sorteer op het videonummer uit de ID (bijv. video_02 -> 2)
     def sort_key(name):
-        m = re.match(r"^(\d+)", name)
-        return int(m.group(1)) if m else 9999
-    files.sort(key=sort_key)
+        vid_id = extract_id_from_filename(name)  # hergebruikt jouw bestaande ID-functie!
+        if vid_id:
+            m = re.search(r"\d+", vid_id)
+            return int(m.group()) if m else 0
+        return 0
+
+    # Hoogste ID eerst: video_02 komt vóór video_01 (linksboven op de site)
+    files.sort(key=sort_key, reverse=True)
 
     cards = []
 
