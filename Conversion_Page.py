@@ -160,7 +160,7 @@ def generate_conversion_page():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scandinavigating | Travel Guides, Stays & Maps</title>
+  <title>Scandinavigating | Explore Nordic Stays</title>
   <style>
     * {{
       box-sizing: border-box;
